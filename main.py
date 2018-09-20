@@ -1,14 +1,19 @@
-# -*- coding: utf-8 -*-
-import random
-ochinpo = ['お', 'ち', 'ん', 'ぽ']
-s = [random.choice(ochinpo) for i in range(4)]
-o = s[0] + s[1] + s[2] + s[3]
-i = 0
-while(True):
-    o += random.choice(ochinpo)
-    if o[len(o)-12:] == 'おちんぽ':
-        print o
-        print 'イグゥゥゥゥ'
-        print 'あなたは{}回目でイキました'.format(i+5)
-        exit()
-    i += 1
+import random as ra
+
+def main(keyword='おちんぽ'):
+    slist = list(keyword)
+    slen = len(slist)
+    
+    o = ''
+    is_orgasm = False
+    while is_orgasm == False:
+        o += ra.choice(slist)
+        if o[-slen:] == ''.join(slist):
+            print (f'{o}\nイグゥゥゥ\nあなたは{len(o)}回目でイキました')
+            is_orgasm = True
+
+if __name__ == '__main__':
+    try:
+        main(input())
+    except IndexError:
+        main()
